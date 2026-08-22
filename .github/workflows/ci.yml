@@ -115,6 +115,9 @@ jobs:
         run: flutter analyze --no-fatal-warnings --no-fatal-infos
 
       - name: Gradle verify develop standard debug
+        env:
+          GRADLE_OPTS: >-
+            -Dorg.gradle.jvmargs=-Xmx4g -XX:MaxMetaspaceSize=512m -Dfile.encoding=UTF-8 --enable-native-access=ALL-UNNAMED
         run: >-
           ./gradlew --no-daemon --parallel --build-cache
           :app:testDevelopStandardDebugUnitTest
