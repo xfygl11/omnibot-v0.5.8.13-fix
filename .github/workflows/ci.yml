@@ -122,6 +122,15 @@ jobs:
           :app:lintDevelopStandardDebug
           -Ptarget=lib/main_standard.dart
 
+      - name: Inspect build outputs
+        if: always()
+        run: |
+          echo "=== outputs tree ==="
+          find app/build/outputs -type f 2>/dev/null | head -50
+          echo "=== apk search ==="
+          find app/build -name "*.apk" 2>/dev/null || true
+          echo "=== done ==="
+
       - name: Upload Debug APK
         uses: actions/upload-artifact@v4
         with:
