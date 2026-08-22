@@ -230,19 +230,20 @@ jobs:
       - name: Decode release keystore
         shell: bash
         env:
-          RELEASE_KEYSTORE_B64: ${{ secrets.RELEASE_KEYSTORE }}
+          RELEASE_KEYSTORE_PART_1: ${{ secrets.RELEASE_KEYSTORE_PART_1 }}
+          RELEASE_KEYSTORE_PART_2: ${{ secrets.RELEASE_KEYSTORE_PART_2 }}
+          RELEASE_KEYSTORE_PART_3: ${{ secrets.RELEASE_KEYSTORE_PART_3 }}
         run: |
           set -euo pipefail
 
-          if [[ -z "${RELEASE_KEYSTORE_B64}" ]]; then
-            echo "Missing RELEASE_KEYSTORE secret." >&2
+          if [[ -z "${RELEASE_KEYSTORE_PART_1}" || -z "${RELEASE_KEYSTORE_PART_2}" || -z "${RELEASE_KEYSTORE_PART_3}" ]]; then
+            echo "RELEASE_KEYSTORE_PART_1, _2, _3 secrets are required." >&2
             exit 1
           fi
 
-          # Strip any whitespace/newlines that may have been introduced during copy
-          CLEAN_B64=$(printf '%s' "${RELEASE_KEYSTORE_B64}" | tr -d '[:space:]')
-          echo "Keystore base64 length after stripping: ${#CLEAN_B64}"
-          echo "Expected length: 2868"
+          CLEAN_B64="${RELEASE_KEYSTORE_PART_1}${RELEASE_KEYSTORE_PART_2}${RELEASE_KEYSTORE_PART_3}"
+          CLEAN_B64=$(printf '%s' "${CLEAN_B64}" | tr -d '[:space:]')
+          echo "Keystore base64 length: ${#CLEAN_B64}"
           if (( ${#CLEAN_B64} % 4 != 0 )); then
             echo "ERROR: base64 length is not a multiple of 4. Length: ${#CLEAN_B64}" >&2
             exit 1
