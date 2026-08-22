@@ -239,8 +239,10 @@ jobs:
             exit 1
           fi
 
+          # Strip any whitespace/newlines that may have been introduced during copy
+          CLEAN_B64=$(printf '%s' "${RELEASE_KEYSTORE_B64}" | tr -d '[:space:]')
           python3 -c "import base64,sys; open(sys.argv[2],'wb').write(base64.b64decode(sys.argv[1]))" \
-            "${RELEASE_KEYSTORE_B64}" "${RUNNER_TEMP}/release.jks"
+            "${CLEAN_B64}" "${RUNNER_TEMP}/release.jks"
           chmod 600 "${RUNNER_TEMP}/release.jks"
 
       - name: Build production release APKs
