@@ -10,7 +10,7 @@
         image: ghcr.io/cirruslabs/flutter:3.38.7
         volumes:
           - gradle-cache:/root/.gradle:rw
-          - pub-cache:/root/.pub-cache:rw
+          - pub-cache:/home/cirrus/.pub-cache:rw
           - android-sdk-ndk:/opt/android-sdk-linux/ndk:rw
           - android-sdk-licenses:/opt/android-sdk-linux/licenses:rw
           - android-sdk-cmake:/opt/android-sdk-linux/cmake:rw
@@ -18,6 +18,7 @@
         JAVA_VERSION: "17"
         FLUTTER_VERSION: "3.38.7"
         NDK_VERSION: "28.2.13676358"
+        PUB_CACHE: "/home/cirrus/.pub-cache"
       stages:
         - name: secret-scan
           image: alpine:3.20
@@ -37,6 +38,9 @@
             gitleaks git . --redact --verbose --gitleaks-ignore-path .
         - name: verify
           script: |
+            # Ensure the pub cache volume is writable for the running user.
+            mkdir -p "${PUB_CACHE:-/home/cirrus/.pub-cache}" || true
+            chmod -R u+rwX "${PUB_CACHE:-/home/cirrus/.pub-cache}" 2>/dev/null || true
             export ANDROID_SDK_ROOT="${ANDROID_SDK_ROOT:-/opt/android-sdk-linux}"
             yes | sdkmanager --licenses >/dev/null || true
             if [ ! -d "$ANDROID_SDK_ROOT/ndk/$NDK_VERSION" ]; then
