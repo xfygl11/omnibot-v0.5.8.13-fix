@@ -241,9 +241,16 @@ jobs:
 
           # Strip any whitespace/newlines that may have been introduced during copy
           CLEAN_B64=$(printf '%s' "${RELEASE_KEYSTORE_B64}" | tr -d '[:space:]')
+          echo "Keystore base64 length after stripping: ${#CLEAN_B64}"
+          echo "Expected length: 2868"
+          if (( ${#CLEAN_B64} % 4 != 0 )); then
+            echo "ERROR: base64 length is not a multiple of 4. Length: ${#CLEAN_B64}" >&2
+            exit 1
+          fi
           python3 -c "import base64,sys; open(sys.argv[2],'wb').write(base64.b64decode(sys.argv[1]))" \
             "${CLEAN_B64}" "${RUNNER_TEMP}/release.jks"
           chmod 600 "${RUNNER_TEMP}/release.jks"
+          echo "Keystore file size: $(wc -c < "${RUNNER_TEMP}/release.jks")"
 
       - name: Build production release APKs
         shell: bash
