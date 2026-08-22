@@ -239,7 +239,8 @@ jobs:
             exit 1
           fi
 
-          printf '%s' "${RELEASE_KEYSTORE_B64}" | base64 --decode > "${RUNNER_TEMP}/release.jks"
+          python3 -c "import base64,sys; open(sys.argv[2],'wb').write(base64.b64decode(sys.argv[1]))" \
+            "${RELEASE_KEYSTORE_B64}" "${RUNNER_TEMP}/release.jks"
           chmod 600 "${RUNNER_TEMP}/release.jks"
 
       - name: Build production release APKs
