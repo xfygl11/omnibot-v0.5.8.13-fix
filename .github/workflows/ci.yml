@@ -121,3 +121,10 @@ jobs:
           :app:assembleDevelopStandardDebug
           :app:lintDevelopStandardDebug
           -Ptarget=lib/main_standard.dart
+
+      - name: Upload Debug APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-debug-apk
+          path: app/build/outputs/apk/developStandard/debug/app-developStandard-debug.apk
+          if-no-files-found: error
