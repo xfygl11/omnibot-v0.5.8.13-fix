@@ -145,7 +145,7 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: pnpm
-          cache-dependency-path: webchat/pnpm-lock.yaml
+          cache-dependency-path: OmniBot-0.5.8.13/webchat/pnpm-lock.yaml
 
       - name: Validate Gradle wrappers
         uses: gradle/actions/wrapper-validation@v4
