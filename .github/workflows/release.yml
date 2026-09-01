@@ -230,16 +230,18 @@ jobs:
       - name: Decode release keystore
         shell: bash
         env:
-          RELEASE_KEYSTORE_B64: ${{ secrets.RELEASE_KEYSTORE }}
+          RELEASE_KEYSTORE_PART_1: ${{ secrets.RELEASE_KEYSTORE_PART_1 }}
+          RELEASE_KEYSTORE_PART_2: ${{ secrets.RELEASE_KEYSTORE_PART_2 }}
+          RELEASE_KEYSTORE_PART_3: ${{ secrets.RELEASE_KEYSTORE_PART_3 }}
         run: |
           set -euo pipefail
 
-          if [[ -z "${RELEASE_KEYSTORE_B64}" ]]; then
-            echo "Missing RELEASE_KEYSTORE secret." >&2
+          if [[ -z "${RELEASE_KEYSTORE_PART_1:-}" || -z "${RELEASE_KEYSTORE_PART_2:-}" || -z "${RELEASE_KEYSTORE_PART_3:-}" ]]; then
+            echo "Missing one or more RELEASE_KEYSTORE_PART_* secrets." >&2
             exit 1
           fi
 
-          printf '%s' "${RELEASE_KEYSTORE_B64}" | base64 --decode > "${RUNNER_TEMP}/release.jks"
+          printf '%s%s%s' "${RELEASE_KEYSTORE_PART_1}" "${RELEASE_KEYSTORE_PART_2}" "${RELEASE_KEYSTORE_PART_3}" | base64 --decode > "${RUNNER_TEMP}/release.jks"
           chmod 600 "${RUNNER_TEMP}/release.jks"
 
       - name: Build production release APKs
