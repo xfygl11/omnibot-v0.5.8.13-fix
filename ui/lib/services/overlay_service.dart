@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 /// !!暂不使用!!
 class OverlayService {
   static const MethodChannel _channel = MethodChannel(
-    'cn.com.omnimind.bot/overlay',
+    'cn.com.omnimind.agent/overlay',
   );
 
   /// 显示消息提示（在MessageView中显示）

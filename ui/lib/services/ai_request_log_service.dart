@@ -61,7 +61,7 @@ class AiRequestLogEntry {
 
 class AiRequestLogService {
   static const MethodChannel _assistCore = MethodChannel(
-    'cn.com.omnimind.bot/AssistCoreEvent',
+    'cn.com.omnimind.agent/AssistCoreEvent',
   );
 
   static Future<List<AiRequestLogEntry>> listRecent({int limit = 10}) async {

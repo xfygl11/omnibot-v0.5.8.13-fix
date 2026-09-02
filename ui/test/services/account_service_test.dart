@@ -5,7 +5,7 @@ import 'package:ui/services/account_service.dart';
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  const channel = MethodChannel('cn.com.omnimind.bot/account');
+  const channel = MethodChannel('cn.com.omnimind.agent/account');
 
   tearDown(() {
     TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger

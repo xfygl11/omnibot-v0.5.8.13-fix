@@ -12,7 +12,7 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   const deviceChannel = MethodChannel('device_info');
-  const updateChannel = MethodChannel('cn.com.omnimind.bot/app_update');
+  const updateChannel = MethodChannel('cn.com.omnimind.agent/app_update');
 
   tearDown(() async {
     AppUpdateService.betaOptInNotifier.value = false;

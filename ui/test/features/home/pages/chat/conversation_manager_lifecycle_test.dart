@@ -12,7 +12,7 @@ import 'package:ui/models/conversation_thread_target.dart';
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  const channel = MethodChannel('cn.com.omnimind.bot/AssistCoreEvent');
+  const channel = MethodChannel('cn.com.omnimind.agent/AssistCoreEvent');
   final messenger =
       TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger;
 

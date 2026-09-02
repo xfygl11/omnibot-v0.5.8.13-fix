@@ -655,7 +655,7 @@ void main() {
     tester,
   ) async {
     const assistCoreChannel = MethodChannel(
-      'cn.com.omnimind.bot/AssistCoreEvent',
+      'cn.com.omnimind.agent/AssistCoreEvent',
     );
     MethodCall? clipboardCall;
     final messenger =

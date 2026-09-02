@@ -270,7 +270,7 @@ class AccountOverview {
 
 class AccountService {
   static const MethodChannel _channel = MethodChannel(
-    'cn.com.omnimind.bot/account',
+    'cn.com.omnimind.agent/account',
   );
 
   static Future<AccountSessionState> getSessionState() async {

@@ -13,7 +13,7 @@ import 'package:ui/theme/app_theme.dart';
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  const assistChannel = MethodChannel('cn.com.omnimind.bot/AssistCoreEvent');
+  const assistChannel = MethodChannel('cn.com.omnimind.agent/AssistCoreEvent');
 
   setUp(() async {
     SharedPreferences.setMockInitialValues(<String, Object>{});

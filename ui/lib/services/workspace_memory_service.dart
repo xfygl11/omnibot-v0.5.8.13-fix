@@ -101,7 +101,7 @@ class WorkspaceShortMemoryItem {
 
 class WorkspaceMemoryService {
   static const MethodChannel _channel = MethodChannel(
-    'cn.com.omnimind.bot/AssistCoreEvent',
+    'cn.com.omnimind.agent/AssistCoreEvent',
   );
 
   static Future<String> getAgentSoulSetting() async {

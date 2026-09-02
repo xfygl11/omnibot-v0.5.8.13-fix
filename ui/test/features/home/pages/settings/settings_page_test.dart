@@ -33,8 +33,8 @@ class _SvgTestAssetBundle extends CachingAssetBundle {
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  const mcpChannel = MethodChannel('cn.com.omnimind.bot/McpServer');
-  const assistChannel = MethodChannel('cn.com.omnimind.bot/AssistCoreEvent');
+  const mcpChannel = MethodChannel('cn.com.omnimind.agent/McpServer');
+  const assistChannel = MethodChannel('cn.com.omnimind.agent/AssistCoreEvent');
 
   setUp(() async {
     SharedPreferences.setMockInitialValues(<String, Object>{});

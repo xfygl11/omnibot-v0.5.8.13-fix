@@ -10,8 +10,8 @@ import 'package:ui/services/storage_service.dart';
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  const channel = MethodChannel('cn.com.omnimind.bot/AssistCoreEvent');
-  const agentRuntimeChannel = MethodChannel('cn.com.omnimind.bot/AgentRuntime');
+  const channel = MethodChannel('cn.com.omnimind.agent/AssistCoreEvent');
+  const agentRuntimeChannel = MethodChannel('cn.com.omnimind.agent/AgentRuntime');
   final messenger =
       TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger;
   late List<Map<String, dynamic>> nativeConversations;

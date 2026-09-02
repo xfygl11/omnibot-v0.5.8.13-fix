@@ -6,7 +6,7 @@ typedef BeforeCloseChatBotCallback = void Function();
 
 class ScreenDialogService {
   static const MethodChannel _channel = MethodChannel(
-    'cn.com.omnimind.bot/ScreenDialogEvent',
+    'cn.com.omnimind.agent/ScreenDialogEvent',
   );
 
   static TitleCallback? _onTitleCallback;

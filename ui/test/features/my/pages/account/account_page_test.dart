@@ -14,7 +14,7 @@ import 'package:ui/widgets/settings_detail_sheet.dart';
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  const channel = MethodChannel('cn.com.omnimind.bot/account');
+  const channel = MethodChannel('cn.com.omnimind.agent/account');
 
   test('weekly quota countdown uses the next Monday at midnight', () {
     expect(

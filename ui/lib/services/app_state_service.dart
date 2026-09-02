@@ -5,7 +5,7 @@ import 'package:ui/theme/app_theme_mode.dart';
 /// 应用状态服务 - 处理与Android应用状态相关的通信
 class AppStateService {
   static const MethodChannel _channel = MethodChannel(
-    'cn.com.omnimind.bot/app_state',
+    'cn.com.omnimind.agent/app_state',
   );
 
   static Future<Map<dynamic, dynamic>?> getPendingShareDraft() async {

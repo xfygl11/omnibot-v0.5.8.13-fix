@@ -3,10 +3,10 @@ import 'dart:async';
 import 'package:flutter/services.dart';
 
 const MethodChannel _voicePlaybackChannel = MethodChannel(
-  'cn.com.omnimind.bot/VoicePlayback',
+  'cn.com.omnimind.agent/VoicePlayback',
 );
 const EventChannel _voicePlaybackEvents = EventChannel(
-  'cn.com.omnimind.bot/VoicePlaybackEvents',
+  'cn.com.omnimind.agent/VoicePlaybackEvents',
 );
 
 enum VoicePlaybackStatus {

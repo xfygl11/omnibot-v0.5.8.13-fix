@@ -198,7 +198,7 @@ class AgentToolEventData {
 
 class AssistsMessageService {
   static const MethodChannel assistCore = MethodChannel(
-    'cn.com.omnimind.bot/AssistCoreEvent',
+    'cn.com.omnimind.agent/AssistCoreEvent',
   );
 
   // 回调函数

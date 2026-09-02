@@ -31,7 +31,7 @@ class McpServerInfo {
 }
 
 class McpServerService {
-  static const MethodChannel _channel = MethodChannel('cn.com.omnimind.bot/McpServer');
+  static const MethodChannel _channel = MethodChannel('cn.com.omnimind.agent/McpServer');
 
   static Future<McpServerInfo?> getState() async {
     try {

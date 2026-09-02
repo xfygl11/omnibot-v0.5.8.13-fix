@@ -47,7 +47,7 @@ class QuickLogSnapshot {
 
 class QuickLogService {
   static const MethodChannel _channel = MethodChannel(
-    'cn.com.omnimind.bot/AssistCoreEvent',
+    'cn.com.omnimind.agent/AssistCoreEvent',
   );
 
   static Future<QuickLogSnapshot> listLogs({int limit = 200}) async {

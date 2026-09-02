@@ -44,7 +44,7 @@ class RuntimeLogEntry {
 
 class RuntimeLogService {
   static const MethodChannel _assistCore = MethodChannel(
-    'cn.com.omnimind.bot/AssistCoreEvent',
+    'cn.com.omnimind.agent/AssistCoreEvent',
   );
 
   static Future<List<RuntimeLogEntry>> listRecent({int limit = 100}) async {

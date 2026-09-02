@@ -7,10 +7,10 @@ import 'package:ui/utils/ui.dart';
 
 // The channel name must match the one in MainActivity.kt
 const spePermission = MethodChannel(
-  'cn.com.omnimind.bot/SpecialPermissionEvent',
+  'cn.com.omnimind.agent/SpecialPermissionEvent',
 );
 const _specialPermissionEvents = EventChannel(
-  'cn.com.omnimind.bot/SpecialPermissionEvents',
+  'cn.com.omnimind.agent/SpecialPermissionEvents',
 );
 
 enum EmbeddedTerminalDistribution {

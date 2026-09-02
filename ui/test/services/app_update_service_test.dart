@@ -7,7 +7,7 @@ import 'package:ui/services/storage_service.dart';
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  const channel = MethodChannel('cn.com.omnimind.bot/app_update');
+  const channel = MethodChannel('cn.com.omnimind.agent/app_update');
 
   tearDown(() async {
     AppUpdateService.betaOptInNotifier.value = false;

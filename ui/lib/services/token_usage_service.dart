@@ -51,7 +51,7 @@ class TokenUsageRecord {
 
 class TokenUsageService {
   static const MethodChannel _assistCore = MethodChannel(
-    'cn.com.omnimind.bot/AssistCoreEvent',
+    'cn.com.omnimind.agent/AssistCoreEvent',
   );
 
   static String normalizeModelId(String rawModel) {

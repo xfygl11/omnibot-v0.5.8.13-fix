@@ -1059,10 +1059,10 @@ mixin _ChatPageUiMixin on _ChatPageStateBase {
         final paths =
             snapshot.data ??
             const OmnibotWorkspacePaths(
-              rootPath: '/data/user/0/cn.com.omnimind.bot/workspace',
+              rootPath: '/data/user/0/cn.com.omnimind.agent/workspace',
               shellRootPath: '/workspace',
               internalRootPath:
-                  '/data/user/0/cn.com.omnimind.bot/workspace/.omnibot',
+                  '/data/user/0/cn.com.omnimind.agent/workspace/.omnibot',
             );
         return OmnibotWorkspaceBrowser(
           workspacePath: paths.rootPath,
@@ -1645,10 +1645,10 @@ mixin _ChatPageUiMixin on _ChatPageStateBase {
         final paths =
             snapshot.data ??
             const OmnibotWorkspacePaths(
-              rootPath: '/data/user/0/cn.com.omnimind.bot/workspace',
+              rootPath: '/data/user/0/cn.com.omnimind.agent/workspace',
               shellRootPath: '/workspace',
               internalRootPath:
-                  '/data/user/0/cn.com.omnimind.bot/workspace/.omnibot',
+                  '/data/user/0/cn.com.omnimind.agent/workspace/.omnibot',
             );
         return OmnibotWorkspaceBrowser(
           key: _hdPadWorkspaceBrowserKey,

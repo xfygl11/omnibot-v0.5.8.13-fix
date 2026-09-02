@@ -50,11 +50,11 @@ class AgentBrowserSessionService {
   AgentBrowserSessionService._();
 
   static const MethodChannel _channel = MethodChannel(
-    'cn.com.omnimind.bot/AgentBrowserSession',
+    'cn.com.omnimind.agent/AgentBrowserSession',
   );
 
   static const String platformViewType =
-      'cn.com.omnimind.bot/agent_browser_view';
+      'cn.com.omnimind.agent/agent_browser_view';
 
   static Future<ChatBrowserSessionSnapshot?> getLiveSessionSnapshot() {
     return getSnapshot();

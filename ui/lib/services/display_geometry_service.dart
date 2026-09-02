@@ -53,7 +53,7 @@ class ScreenCornerRadii {
 
 class DisplayGeometryService {
   static const MethodChannel _channel = MethodChannel(
-    'cn.com.omnimind.bot/DisplayGeometry',
+    'cn.com.omnimind.agent/DisplayGeometry',
   );
   static const Duration _metricsRefreshWindow = Duration(milliseconds: 250);
 

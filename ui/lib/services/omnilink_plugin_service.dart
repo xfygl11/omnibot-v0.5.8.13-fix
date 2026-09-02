@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 /// Sanitized inbound Agent messages emitted by the built-in OmniLink plugin.
 class OmniLinkPluginService {
   static const EventChannel _events = EventChannel(
-    'cn.com.omnimind.bot/OmniLinkEvents',
+    'cn.com.omnimind.agent/OmniLinkEvents',
   );
 
   static Stream<Map<String, dynamic>> get events =>

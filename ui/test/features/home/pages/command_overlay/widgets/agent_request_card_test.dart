@@ -12,9 +12,9 @@ void main() {
 
   const requestIdentity = 'request-1.request-1-card.mode.1000';
   const requestStorageKey = 'agent_request_response.$requestIdentity';
-  const agentRuntimeChannel = MethodChannel('cn.com.omnimind.bot/AgentRuntime');
+  const agentRuntimeChannel = MethodChannel('cn.com.omnimind.agent/AgentRuntime');
   const assistCoreChannel = MethodChannel(
-    'cn.com.omnimind.bot/AssistCoreEvent',
+    'cn.com.omnimind.agent/AssistCoreEvent',
   );
 
   setUp(() async {
