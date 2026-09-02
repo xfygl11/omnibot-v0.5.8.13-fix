@@ -162,11 +162,11 @@ val syncPluginAssets by tasks.registering(Sync::class) {
 }
 
 android {
-    namespace = "cn.com.omnimind.bot"
+    namespace = "cn.com.omnimind.agent"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "cn.com.omnimind.bot"
+        applicationId = "cn.com.omnimind.agent"
         minSdk = 29
         targetSdk = 35
         // Beta release. Keep the Android version code monotonic so the APK

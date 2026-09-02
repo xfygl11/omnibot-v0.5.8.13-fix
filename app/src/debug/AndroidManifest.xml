@@ -6,7 +6,7 @@
             android:enabled="true"
             android:exported="true">
             <intent-filter>
-                <action android:name="cn.com.omnimind.bot.debug.HUMAN_RECORDING" />
+                <action android:name="cn.com.omnimind.agent.debug.HUMAN_RECORDING" />
             </intent-filter>
         </receiver>
         <receiver
@@ -14,7 +14,7 @@
             android:enabled="true"
             android:exported="true">
             <intent-filter>
-                <action android:name="cn.com.omnimind.bot.debug.CALL_OMNIFLOW_TOOL" />
+                <action android:name="cn.com.omnimind.agent.debug.CALL_OMNIFLOW_TOOL" />
             </intent-filter>
         </receiver>
         <receiver
@@ -22,7 +22,7 @@
             android:enabled="true"
             android:exported="true">
             <intent-filter>
-                <action android:name="cn.com.omnimind.bot.debug.OBSERVE_OMNIFLOW" />
+                <action android:name="cn.com.omnimind.agent.debug.OBSERVE_OMNIFLOW" />
             </intent-filter>
         </receiver>
         <receiver
@@ -30,7 +30,7 @@
             android:enabled="true"
             android:exported="true">
             <intent-filter>
-                <action android:name="cn.com.omnimind.bot.debug.CONTROL_OMNIFLOW" />
+                <action android:name="cn.com.omnimind.agent.debug.CONTROL_OMNIFLOW" />
             </intent-filter>
         </receiver>
         <receiver
@@ -38,7 +38,7 @@
             android:enabled="true"
             android:exported="true">
             <intent-filter>
-                <action android:name="cn.com.omnimind.bot.debug.RUN_VLM_TASK" />
+                <action android:name="cn.com.omnimind.agent.debug.RUN_VLM_TASK" />
             </intent-filter>
         </receiver>
         <receiver
@@ -46,7 +46,7 @@
             android:enabled="true"
             android:exported="true">
             <intent-filter>
-                <action android:name="cn.com.omnimind.bot.debug.CONFIGURE_MODEL_PROVIDER" />
+                <action android:name="cn.com.omnimind.agent.debug.CONFIGURE_MODEL_PROVIDER" />
             </intent-filter>
         </receiver>
         <receiver
@@ -54,7 +54,7 @@
             android:enabled="true"
             android:exported="true">
             <intent-filter>
-                <action android:name="cn.com.omnimind.bot.debug.SANDBOX_PROJECT" />
+                <action android:name="cn.com.omnimind.agent.debug.SANDBOX_PROJECT" />
             </intent-filter>
         </receiver>
     </application>

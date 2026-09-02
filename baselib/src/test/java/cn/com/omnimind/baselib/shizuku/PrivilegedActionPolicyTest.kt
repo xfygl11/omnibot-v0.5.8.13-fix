@@ -80,11 +80,11 @@ class PrivilegedActionPolicyTest {
         )
         assertTrue(
             PrivilegedActionPolicy.blockedCommandReason(
-                "am force-stop cn.com.omnimind.bot.debug"
+                "am force-stop cn.com.omnimind.agent.debug"
             ) != null
         )
-        assertTrue(PrivilegedActionPolicy.isHostPackage("cn.com.omnimind.bot"))
-        assertTrue(PrivilegedActionPolicy.isHostPackage("cn.com.omnimind.bot.debug"))
+        assertTrue(PrivilegedActionPolicy.isHostPackage("cn.com.omnimind.agent"))
+        assertTrue(PrivilegedActionPolicy.isHostPackage("cn.com.omnimind.agent.debug"))
         assertFalse(PrivilegedActionPolicy.isHostPackage("com.sankuai.meituan"))
     }
 }

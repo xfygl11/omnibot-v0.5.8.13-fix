@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "cn.com.omnimind.bot.omniflow"
+    namespace = "cn.com.omnimind.agent.omniflow"
     compileSdk = 36
 
     defaultConfig {

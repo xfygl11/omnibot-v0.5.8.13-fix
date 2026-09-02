@@ -204,7 +204,7 @@ object PrivilegedActionPolicy {
 
     fun isHostPackage(packageName: String?): Boolean {
         val normalized = packageName?.trim().orEmpty()
-        return normalized == "cn.com.omnimind.bot" ||
-            normalized.startsWith("cn.com.omnimind.bot.")
+        return normalized == "cn.com.omnimind.agent" ||
+            normalized.startsWith("cn.com.omnimind.agent.")
     }
 }

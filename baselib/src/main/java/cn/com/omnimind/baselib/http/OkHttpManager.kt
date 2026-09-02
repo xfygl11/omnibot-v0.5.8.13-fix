@@ -61,7 +61,7 @@ object OkHttpManager {
     private fun getDefaultBaseUrl(): String {
         try {
             // 明确指定 app 模块的 BuildConfig
-            val appBuildConfig = Class.forName("cn.com.omnimind.bot.BuildConfig")
+            val appBuildConfig = Class.forName("cn.com.omnimind.agent.BuildConfig")
             val baseUrl = appBuildConfig.getField("BASE_URL").get(null) as String
             return baseUrl.trim().trimEnd('/')
         } catch (e: Exception) {

@@ -142,11 +142,11 @@
             android:windowSoftInputMode="adjustResize" />
 
         <receiver
-            android:name="cn.com.omnimind.bot.agent.AgentAlarmReceiver"
+            android:name="cn.com.omnimind.agent.agent.AgentAlarmReceiver"
             android:enabled="true"
             android:exported="false" />
         <receiver
-            android:name="cn.com.omnimind.bot.agent.AgentExactAlarmPermissionReceiver"
+            android:name="cn.com.omnimind.agent.agent.AgentExactAlarmPermissionReceiver"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
@@ -154,15 +154,15 @@
             </intent-filter>
         </receiver>
         <receiver
-            android:name="cn.com.omnimind.bot.agent.WorkspaceMemoryRollupReceiver"
+            android:name="cn.com.omnimind.agent.agent.WorkspaceMemoryRollupReceiver"
             android:enabled="true"
             android:exported="false" />
         <receiver
-            android:name="cn.com.omnimind.bot.agent.WorkspaceScheduledTaskReceiver"
+            android:name="cn.com.omnimind.agent.agent.WorkspaceScheduledTaskReceiver"
             android:enabled="true"
             android:exported="false" />
         <receiver
-            android:name="cn.com.omnimind.bot.agent.WorkspaceScheduleBootReceiver"
+            android:name="cn.com.omnimind.agent.agent.WorkspaceScheduleBootReceiver"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
@@ -193,22 +193,22 @@
             </intent-filter>
         </service>
         <service
-            android:name="cn.com.omnimind.bot.agent.AgentAlarmRingingService"
+            android:name="cn.com.omnimind.agent.agent.AgentAlarmRingingService"
             android:enabled="true"
             android:exported="false"
             android:foregroundServiceType="mediaPlayback" />
         <service
-            android:name="cn.com.omnimind.bot.agent.AgentMusicPlaybackService"
+            android:name="cn.com.omnimind.agent.agent.AgentMusicPlaybackService"
             android:enabled="true"
             android:exported="false"
             android:foregroundServiceType="mediaPlayback" />
         <service
-            android:name="cn.com.omnimind.bot.task.runtime.TaskRuntimeService"
+            android:name="cn.com.omnimind.agent.task.runtime.TaskRuntimeService"
             android:enabled="true"
             android:exported="false"
             android:foregroundServiceType="dataSync" />
         <activity
-            android:name="cn.com.omnimind.bot.agent.BrowserFileChooserRequestActivity"
+            android:name="cn.com.omnimind.agent.agent.BrowserFileChooserRequestActivity"
             android:exported="false"
             android:theme="@style/Theme.OmnibotApp.Transparent"
             android:excludeFromRecents="true"
