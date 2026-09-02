@@ -28,7 +28,7 @@ class _SvgTestAssetBundle extends CachingAssetBundle {
 
 void main() {
   const assistCoreChannel = MethodChannel(
-    'cn.com.omnimind.bot/AssistCoreEvent',
+    'cn.com.omnimind.agent/AssistCoreEvent',
   );
 
   TestWidgetsFlutterBinding.ensureInitialized();

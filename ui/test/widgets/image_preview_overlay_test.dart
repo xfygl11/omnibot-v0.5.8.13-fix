@@ -9,11 +9,11 @@ import 'package:ui/services/omnibot_resource_service.dart';
 import 'package:ui/services/special_permission.dart';
 import 'package:ui/widgets/image_preview_overlay.dart';
 
-const _fileChannel = MethodChannel('cn.com.omnimind.bot/file_save');
+const _fileChannel = MethodChannel('cn.com.omnimind.agent/file_save');
 const _workspacePaths = OmnibotWorkspacePaths(
-  rootPath: '/data/user/0/cn.com.omnimind.bot/workspace',
+  rootPath: '/data/user/0/cn.com.omnimind.agent/workspace',
   shellRootPath: '/workspace',
-  internalRootPath: '/data/user/0/cn.com.omnimind.bot/workspace/.omnibot',
+  internalRootPath: '/data/user/0/cn.com.omnimind.agent/workspace/.omnibot',
 );
 
 void main() {

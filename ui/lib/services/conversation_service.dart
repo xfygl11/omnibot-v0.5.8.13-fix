@@ -12,7 +12,7 @@ import 'package:ui/services/storage_service.dart';
 class ConversationService {
   static const Duration recentConversationWindow = Duration(days: 7);
   static const MethodChannel _assistCore = MethodChannel(
-    'cn.com.omnimind.bot/AssistCoreEvent',
+    'cn.com.omnimind.agent/AssistCoreEvent',
   );
   static const String _hiddenAgentConversationIdsKey =
       'hidden_agent_conversation_ids';

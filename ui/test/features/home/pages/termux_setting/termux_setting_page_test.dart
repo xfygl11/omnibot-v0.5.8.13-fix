@@ -14,10 +14,10 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   const terminalChannel = MethodChannel(
-    'cn.com.omnimind.bot/SpecialPermissionEvent',
+    'cn.com.omnimind.agent/SpecialPermissionEvent',
   );
   const terminalEventsChannel = MethodChannel(
-    'cn.com.omnimind.bot/SpecialPermissionEvents',
+    'cn.com.omnimind.agent/SpecialPermissionEvents',
   );
   late Directory workspaceDirectory;
   late Completer<void> switchGate;

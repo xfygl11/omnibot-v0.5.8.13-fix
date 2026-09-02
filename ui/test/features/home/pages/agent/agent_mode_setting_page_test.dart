@@ -14,7 +14,7 @@ import 'package:ui/widgets/settings_detail_sheet.dart';
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  const agentRuntimeChannel = MethodChannel('cn.com.omnimind.bot/AgentRuntime');
+  const agentRuntimeChannel = MethodChannel('cn.com.omnimind.agent/AgentRuntime');
 
   setUp(() async {
     SharedPreferences.setMockInitialValues(<String, Object>{});

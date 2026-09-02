@@ -753,10 +753,10 @@ class AgentRuntimeService {
   AgentRuntimeService._();
 
   static const MethodChannel _methodChannel = MethodChannel(
-    'cn.com.omnimind.bot/AgentRuntime',
+    'cn.com.omnimind.agent/AgentRuntime',
   );
   static const EventChannel _eventChannel = EventChannel(
-    'cn.com.omnimind.bot/AgentRuntimeEvents',
+    'cn.com.omnimind.agent/AgentRuntimeEvents',
   );
 
   static final StreamController<Map<String, dynamic>> _eventController =

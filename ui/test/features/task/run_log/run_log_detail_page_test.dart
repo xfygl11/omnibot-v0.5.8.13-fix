@@ -5,7 +5,7 @@ import 'package:ui/features/task/pages/execution_history/run_log_detail_page.dar
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
-  const assistChannel = MethodChannel('cn.com.omnimind.bot/AssistCoreEvent');
+  const assistChannel = MethodChannel('cn.com.omnimind.agent/AssistCoreEvent');
 
   setUp(() {
     TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger

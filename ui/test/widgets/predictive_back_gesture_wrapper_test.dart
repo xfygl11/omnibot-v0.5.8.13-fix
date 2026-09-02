@@ -76,7 +76,7 @@ Future<void> _updateBackGesture(WidgetTester tester, double progress) {
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
   const displayGeometryChannel = MethodChannel(
-    'cn.com.omnimind.bot/DisplayGeometry',
+    'cn.com.omnimind.agent/DisplayGeometry',
   );
 
   setUp(() async {

@@ -18,10 +18,10 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   const terminalChannel = MethodChannel(
-    'cn.com.omnimind.bot/SpecialPermissionEvent',
+    'cn.com.omnimind.agent/SpecialPermissionEvent',
   );
-  const assistsChannel = MethodChannel('cn.com.omnimind.bot/AssistCoreEvent');
-  const accountChannel = MethodChannel('cn.com.omnimind.bot/account');
+  const assistsChannel = MethodChannel('cn.com.omnimind.agent/AssistCoreEvent');
+  const accountChannel = MethodChannel('cn.com.omnimind.agent/account');
   late String savedDistribution;
   late List<String> requestedPackageIds;
   late Map<String, dynamic> terminalSnapshot;

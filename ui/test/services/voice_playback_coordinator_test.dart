@@ -5,8 +5,8 @@ import 'package:ui/services/voice_playback_coordinator.dart';
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  const assistCoreChannel = MethodChannel('cn.com.omnimind.bot/AssistCoreEvent');
-  const voiceChannel = MethodChannel('cn.com.omnimind.bot/VoicePlayback');
+  const assistCoreChannel = MethodChannel('cn.com.omnimind.agent/AssistCoreEvent');
+  const voiceChannel = MethodChannel('cn.com.omnimind.agent/VoicePlayback');
 
   late List<Map<String, dynamic>> sceneBindings;
   late Map<String, dynamic> sceneVoiceConfig;

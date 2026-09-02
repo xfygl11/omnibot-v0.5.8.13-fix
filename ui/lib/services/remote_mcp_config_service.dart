@@ -3,7 +3,7 @@ import 'package:ui/models/remote_mcp_server.dart';
 
 class RemoteMcpConfigService {
   static const MethodChannel _channel = MethodChannel(
-    'cn.com.omnimind.bot/RemoteMcpConfig',
+    'cn.com.omnimind.agent/RemoteMcpConfig',
   );
 
   static Future<List<RemoteMcpServer>> listServers() async {

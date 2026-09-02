@@ -247,7 +247,7 @@ Map<String, Object?> _runtimePlugin() => <String, Object?>{
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
-  const channel = MethodChannel('cn.com.omnimind.bot/PluginPlatform');
+  const channel = MethodChannel('cn.com.omnimind.agent/PluginPlatform');
   final calls = <MethodCall>[];
   var plugins = <Map<String, Object?>>[];
 

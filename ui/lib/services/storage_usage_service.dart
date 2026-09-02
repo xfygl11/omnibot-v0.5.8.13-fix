@@ -335,7 +335,7 @@ class StorageUsageStrategyResult {
 
 class StorageUsageService {
   static const MethodChannel _channel = MethodChannel(
-    'cn.com.omnimind.bot/StorageUsage',
+    'cn.com.omnimind.agent/StorageUsage',
   );
 
   static Future<StorageUsageSummary> getStorageUsageSummary() async {

@@ -32,7 +32,7 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   const assistCoreChannel = MethodChannel(
-    'cn.com.omnimind.bot/AssistCoreEvent',
+    'cn.com.omnimind.agent/AssistCoreEvent',
   );
 
   tearDown(ModelsDevCatalogService.resetForTesting);

@@ -52,9 +52,9 @@ Future<void> _sendBackGesture(
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  const agentRuntimeChannel = MethodChannel('cn.com.omnimind.bot/AgentRuntime');
+  const agentRuntimeChannel = MethodChannel('cn.com.omnimind.agent/AgentRuntime');
   const assistCoreChannel = MethodChannel(
-    'cn.com.omnimind.bot/AssistCoreEvent',
+    'cn.com.omnimind.agent/AssistCoreEvent',
   );
 
   setUp(() async {

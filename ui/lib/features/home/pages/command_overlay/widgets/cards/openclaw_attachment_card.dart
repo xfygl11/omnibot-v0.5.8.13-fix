@@ -18,7 +18,7 @@ class OpenClawAttachmentCard extends StatefulWidget {
 
 class _OpenClawAttachmentCardState extends State<OpenClawAttachmentCard> {
   static const MethodChannel _fileSaveChannel = MethodChannel(
-    'cn.com.omnimind.bot/file_save',
+    'cn.com.omnimind.agent/file_save',
   );
   bool _downloading = false;
   bool _saved = false;

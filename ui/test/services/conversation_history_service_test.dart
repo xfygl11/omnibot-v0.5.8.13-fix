@@ -39,7 +39,7 @@ void main() {
 
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  const channel = MethodChannel('cn.com.omnimind.bot/AssistCoreEvent');
+  const channel = MethodChannel('cn.com.omnimind.agent/AssistCoreEvent');
   final messenger =
       TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger;
   late Map<String, List<Map<String, dynamic>>> nativeMessages;

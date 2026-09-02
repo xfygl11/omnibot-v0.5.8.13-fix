@@ -9,10 +9,10 @@ import 'package:ui/models/conversation_thread_target.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
-  const pluginChannel = MethodChannel('cn.com.omnimind.bot/PluginPlatform');
-  const assistChannel = MethodChannel('cn.com.omnimind.bot/AssistCoreEvent');
+  const pluginChannel = MethodChannel('cn.com.omnimind.agent/PluginPlatform');
+  const assistChannel = MethodChannel('cn.com.omnimind.agent/AssistCoreEvent');
   const specialPermissionChannel = MethodChannel(
-    'cn.com.omnimind.bot/SpecialPermissionEvent',
+    'cn.com.omnimind.agent/SpecialPermissionEvent',
   );
   final toolCalls = <Map<Object?, Object?>>[];
   Map<String, Object?>? Function(String name, Map<Object?, Object?> call)?

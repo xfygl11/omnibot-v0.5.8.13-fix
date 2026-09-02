@@ -4,7 +4,7 @@ import 'package:ui/services/display_geometry_service.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
-  const channel = MethodChannel('cn.com.omnimind.bot/DisplayGeometry');
+  const channel = MethodChannel('cn.com.omnimind.agent/DisplayGeometry');
 
   tearDown(() async {
     TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger

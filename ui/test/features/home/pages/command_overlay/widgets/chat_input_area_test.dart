@@ -13,7 +13,7 @@ import 'package:ui/widgets/provider_vendor_icon.dart';
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  const speechChannel = MethodChannel('cn.com.omnimind.bot/SpeechRecognition');
+  const speechChannel = MethodChannel('cn.com.omnimind.agent/SpeechRecognition');
   final messenger =
       TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger;
 

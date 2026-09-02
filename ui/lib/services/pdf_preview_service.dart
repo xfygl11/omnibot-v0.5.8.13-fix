@@ -41,7 +41,7 @@ class OmnibotPdfDocumentInfo {
 
 class OmnibotPdfPreviewService {
   static const MethodChannel _channel = MethodChannel(
-    'cn.com.omnimind.bot/pdf_preview',
+    'cn.com.omnimind.agent/pdf_preview',
   );
 
   static final Map<String, Future<OmnibotPdfDocumentInfo>> _infoCache =

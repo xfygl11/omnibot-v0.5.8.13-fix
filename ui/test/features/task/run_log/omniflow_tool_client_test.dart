@@ -4,7 +4,7 @@ import 'package:ui/features/task/run_log/omniflow_tool_client.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
-  const channel = MethodChannel('cn.com.omnimind.bot/AssistCoreEvent');
+  const channel = MethodChannel('cn.com.omnimind.agent/AssistCoreEvent');
   final calls = <MethodCall>[];
 
   setUp(() {

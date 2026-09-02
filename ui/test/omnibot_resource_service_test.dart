@@ -7,9 +7,9 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   const workspacePaths = OmnibotWorkspacePaths(
-    rootPath: '/data/user/0/cn.com.omnimind.bot/workspace',
+    rootPath: '/data/user/0/cn.com.omnimind.agent/workspace',
     shellRootPath: '/workspace',
-    internalRootPath: '/data/user/0/cn.com.omnimind.bot/workspace/.omnibot',
+    internalRootPath: '/data/user/0/cn.com.omnimind.agent/workspace/.omnibot',
   );
 
   setUpAll(() {
@@ -31,7 +31,7 @@ void main() {
       expect(metadata, isNotNull);
       expect(
         metadata!.path,
-        '/data/user/0/cn.com.omnimind.bot/workspace/demo/output.png',
+        '/data/user/0/cn.com.omnimind.agent/workspace/demo/output.png',
       );
       expect(metadata.shellPath, '/workspace/demo/output.png');
       expect(metadata.previewKind, 'image');
@@ -76,19 +76,19 @@ void main() {
 
   test('describePath derives inline rendering hints from file extension', () {
     final audio = OmnibotResourceService.describePath(
-      '/data/user/0/cn.com.omnimind.bot/workspace/audio/demo.mp3',
+      '/data/user/0/cn.com.omnimind.agent/workspace/audio/demo.mp3',
     );
     final video = OmnibotResourceService.describePath(
-      '/data/user/0/cn.com.omnimind.bot/workspace/video/demo.mp4',
+      '/data/user/0/cn.com.omnimind.agent/workspace/video/demo.mp4',
     );
     final office = OmnibotResourceService.describePath(
-      '/data/user/0/cn.com.omnimind.bot/workspace/docs/quarterly-report.docx',
+      '/data/user/0/cn.com.omnimind.agent/workspace/docs/quarterly-report.docx',
     );
     final document = OmnibotResourceService.describePath(
-      '/data/user/0/cn.com.omnimind.bot/workspace/docs/spec.pdf',
+      '/data/user/0/cn.com.omnimind.agent/workspace/docs/spec.pdf',
     );
     final html = OmnibotResourceService.describePath(
-      '/data/user/0/cn.com.omnimind.bot/workspace/docs/report.html',
+      '/data/user/0/cn.com.omnimind.agent/workspace/docs/report.html',
     );
 
     expect(audio.shellPath, '/workspace/audio/demo.mp3');
@@ -136,10 +136,10 @@ void main() {
               );
             }
             return <String, String>{
-              'rootPath': '/data/user/0/cn.com.omnimind.bot.debug/workspace',
+              'rootPath': '/data/user/0/cn.com.omnimind.agent.debug/workspace',
               'shellRootPath': '/workspace',
               'internalRootPath':
-                  '/data/user/0/cn.com.omnimind.bot.debug/workspace/.omnibot',
+                  '/data/user/0/cn.com.omnimind.agent.debug/workspace/.omnibot',
             };
           });
 
@@ -152,13 +152,13 @@ void main() {
       expect(callCount, 2);
       expect(
         retried.rootPath,
-        '/data/user/0/cn.com.omnimind.bot.debug/workspace',
+        '/data/user/0/cn.com.omnimind.agent.debug/workspace',
       );
       expect(
         OmnibotResourceService.androidPathForShellPath(
           '/workspace/docs/spec.pdf',
         ),
-        '/data/user/0/cn.com.omnimind.bot.debug/workspace/docs/spec.pdf',
+        '/data/user/0/cn.com.omnimind.agent.debug/workspace/docs/spec.pdf',
       );
     },
   );

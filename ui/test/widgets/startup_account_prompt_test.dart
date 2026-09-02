@@ -12,7 +12,7 @@ import 'package:ui/widgets/startup_account_prompt.dart';
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  const accountChannel = MethodChannel('cn.com.omnimind.bot/account');
+  const accountChannel = MethodChannel('cn.com.omnimind.agent/account');
 
   setUp(() async {
     SharedPreferences.setMockInitialValues(<String, Object>{});

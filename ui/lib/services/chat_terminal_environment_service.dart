@@ -29,7 +29,7 @@ class ChatTerminalEnvironmentVariable {
 class ChatTerminalEnvironmentService {
   static const String _storageKey = 'chat_terminal_environment_variables';
   static const MethodChannel _nativeChannel = MethodChannel(
-    'cn.com.omnimind.bot/SpecialPermissionEvent',
+    'cn.com.omnimind.agent/SpecialPermissionEvent',
   );
   static final RegExp _envKeyPattern = RegExp(r'^[A-Za-z_][A-Za-z0-9_]*$');
 

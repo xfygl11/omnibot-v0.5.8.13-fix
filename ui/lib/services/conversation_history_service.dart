@@ -13,7 +13,7 @@ import 'package:ui/services/omnibot_resource_service.dart';
 /// 对话历史持久化服务
 class ConversationHistoryService {
   static const MethodChannel _assistCore = MethodChannel(
-    'cn.com.omnimind.bot/AssistCoreEvent',
+    'cn.com.omnimind.agent/AssistCoreEvent',
   );
   static const String _legacyConversationIdKey = 'current_conversation_id';
   static const String _conversationIdKeyPrefix = 'current_conversation_id_';

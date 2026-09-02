@@ -118,7 +118,7 @@ class AppUpdateInstallResult {
 
 class AppUpdateService {
   static const MethodChannel _channel = MethodChannel(
-    'cn.com.omnimind.bot/app_update',
+    'cn.com.omnimind.agent/app_update',
   );
   static const String _dismissedBannerVersionKey =
       'dismissed_app_update_banner_version';

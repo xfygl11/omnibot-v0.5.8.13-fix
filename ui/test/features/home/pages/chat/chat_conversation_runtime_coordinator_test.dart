@@ -9,10 +9,10 @@ import 'package:ui/services/voice_playback_coordinator.dart';
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  const channelName = 'cn.com.omnimind.bot/AssistCoreEvent';
+  const channelName = 'cn.com.omnimind.agent/AssistCoreEvent';
   const codec = StandardMethodCodec();
   const methodChannel = MethodChannel(channelName);
-  const voiceChannel = MethodChannel('cn.com.omnimind.bot/VoicePlayback');
+  const voiceChannel = MethodChannel('cn.com.omnimind.agent/VoicePlayback');
   final coordinator = ChatConversationRuntimeCoordinator.instance;
   final recordedMethodCalls = <MethodCall>[];
 

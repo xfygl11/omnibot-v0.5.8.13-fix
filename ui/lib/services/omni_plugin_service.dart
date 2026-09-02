@@ -26,7 +26,7 @@ class OmniVlmReadiness {
 
 class OmniPluginService {
   static const MethodChannel _channel = MethodChannel(
-    'cn.com.omnimind.bot/PluginPlatform',
+    'cn.com.omnimind.agent/PluginPlatform',
   );
 
   static Future<List<OmniPluginItem>> listPlugins() async {
