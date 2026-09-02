@@ -94,6 +94,45 @@ object AgentToolConcurrencyPolicy {
         toolName in TURN_BOUNDARY_TOOL_NAMES
 
     /**
+     * Partition [calls] into batches (same greedy rules as [partitionToolCalls]),
+     * then stably move every batch that contains a turn-boundary (exclusive) tool
+     * to the END of the execution order while preserving the relative order inside
+     * both groups.
+     *
+     * Without this reorder, a single assistant message that mixes an exclusive
+     * tool (terminal_execute / bash / privileged session) with sibling calls would
+     * drop every sibling that appears after the exclusive tool in message order
+     * once the exclusive tool runs, forcing the model to re-emit them next round.
+     * Running the non-exclusive batches first lets them complete in the same round,
+     * while the exclusive tool still finishes the round as the last observation.
+     */
+    fun partitionTurnBoundaryLast(
+        calls: List<AssistantToolCall>,
+        parsedArgs: Map<String, JsonObject>,
+    ): List<ToolBatch> = partitionTurnBoundaryLast(
+        calls = calls,
+        parsedArgs = parsedArgs,
+        classifier = { call, args -> classify(call.function.name, args) },
+    )
+
+    fun partitionTurnBoundaryLast(
+        calls: List<AssistantToolCall>,
+        parsedArgs: Map<String, JsonObject>,
+        classifier: (AssistantToolCall, JsonObject) -> ToolConcurrency,
+    ): List<ToolBatch> {
+        val batches = partitionToolCalls(calls, parsedArgs, classifier)
+        if (batches.size <= 1) return batches
+        val regular = mutableListOf<ToolBatch>()
+        val exclusive = mutableListOf<ToolBatch>()
+        for (batch in batches) {
+            val isBoundary = batch.calls.any { isTurnBoundary(it.function.name) }
+            (if (isBoundary) exclusive else regular).add(batch)
+        }
+        if (regular.isEmpty() || exclusive.isEmpty()) return batches
+        return regular + exclusive
+    }
+
+    /**
      * Greedy partition: consecutive PARALLEL_SAFE calls merge into one batch;
      * any SERIAL_BARRIER call becomes its own batch. Preserves original order.
      *

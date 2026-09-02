@@ -2,8 +2,9 @@ package cn.com.omnimind.bot.agent
 
 import cn.com.omnimind.baselib.llm.AssistantToolCall
 import cn.com.omnimind.baselib.llm.AssistantToolCallFunction
-import cn.com.omnimind.bot.agent.tool.AgentToolConcurrencyPolicy
-import cn.com.omnimind.bot.agent.tool.ToolConcurrency
+import cn.com.omnimind.agent.agent.tool.AgentToolConcurrencyPolicy
+import cn.com.omnimind.agent.agent.tool.ToolBatch
+import cn.com.omnimind.agent.agent.tool.ToolConcurrency
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.put
@@ -152,5 +153,102 @@ class AgentToolConcurrencyPolicyTest {
     fun `partition empty list returns empty`() {
         val batches = AgentToolConcurrencyPolicy.partitionToolCalls(emptyList(), emptyMap())
         assertTrue(batches.isEmpty())
+    }
+
+    // ---- partitionTurnBoundaryLast ----
+
+    private fun ids(batches: List<ToolBatch>): List<String> =
+        batches.flatMap { it.calls.map { c -> c.id } }
+
+    private fun batchFlags(batches: List<ToolBatch>): List<String> =
+        batches.map { "${if (it.parallel) "P" else "S"}${it.calls.size}" }
+
+    @Test
+    fun `turn boundary batch is stably moved to the end so siblings run first`() {
+        // terminal_execute (boundary, serial) must run last; earlier parallel-safe
+        // siblings must not be dropped by the boundary round end.
+        val calls = listOf(
+            call("c1", "terminal_execute"),
+            call("c2", "memory_search"),
+            call("c3", "file_list")
+        )
+        val parsed = calls.associate { it.id to emptyArgs }
+        val batches = AgentToolConcurrencyPolicy.partitionTurnBoundaryLast(calls, parsed)
+        // memory_search+file_list are consecutive parallel-safe -> merge into one
+        // batch that runs before the boundary batch.
+        assertEquals(listOf("c2", "c3", "c1"), ids(batches))
+        assertEquals(listOf("P2", "S1"), batchFlags(batches))
+    }
+
+    @Test
+    fun `serial non-boundary sibling between parallels still runs before boundary`() {
+        // terminal_execute + terminal_session_start: session_start is a serial
+        // barrier but NOT a turn boundary, so it must not be starved either.
+        val calls = listOf(
+            call("c1", "terminal_execute"),
+            call("c2", "terminal_session_start")
+        )
+        val parsed = calls.associate { it.id to emptyArgs }
+        val batches = AgentToolConcurrencyPolicy.partitionTurnBoundaryLast(calls, parsed)
+        assertEquals(listOf("c2", "c1"), ids(batches))
+        assertEquals(listOf("S1", "S1"), batchFlags(batches))
+    }
+
+    @Test
+    fun `multiple boundary batches keep relative order at the tail`() {
+        // 3x terminal_execute stays as three serial batches; all are boundary so
+        // relative order is preserved. First executes, the rest drop (round end).
+        val calls = listOf(
+            call("c1", "terminal_execute"),
+            call("c2", "terminal_execute"),
+            call("c3", "terminal_execute")
+        )
+        val parsed = calls.associate { it.id to emptyArgs }
+        val batches = AgentToolConcurrencyPolicy.partitionTurnBoundaryLast(calls, parsed)
+        assertEquals(listOf("c1", "c2", "c3"), ids(batches))
+        assertEquals(3, batches.size)
+        assertTrue(batches.all { !it.parallel })
+    }
+
+    @Test
+    fun `regular group keeps original relative order before boundary tail`() {
+        val calls = listOf(
+            call("c1", "memory_search"),
+            call("c2", "file_read"),
+            call("c3", "terminal_execute"),
+            call("c4", "file_list"),
+            call("c5", "memory_load")
+        )
+        val parsed = calls.associate { it.id to emptyArgs }
+        val batches = AgentToolConcurrencyPolicy.partitionTurnBoundaryLast(calls, parsed)
+        // c1+c2+c3... original: [mem,file_read](P2) [terminal](S1) [file_list,memory_load](P2)
+        // reordered: regular first [c1,c2],[c4,c5] then boundary [c3]
+        assertEquals(listOf("c1", "c2", "c4", "c5", "c3"), ids(batches))
+        assertEquals(listOf("P2", "P2", "S1"), batchFlags(batches))
+        assertTrue(batches.last().calls.single().id == "c3")
+    }
+
+    @Test
+    fun `no boundary tool leaves order unchanged`() {
+        val calls = listOf(
+            call("c1", "memory_search"),
+            call("c2", "file_write"),
+            call("c3", "file_list")
+        )
+        val parsed = calls.associate { it.id to emptyArgs }
+        val moved = AgentToolConcurrencyPolicy.partitionTurnBoundaryLast(calls, parsed)
+        val original = AgentToolConcurrencyPolicy.partitionToolCalls(calls, parsed)
+        assertEquals(ids(original), ids(moved))
+        assertEquals(batchFlags(original), batchFlags(moved))
+    }
+
+    @Test
+    fun `empty input stays empty`() {
+        assertTrue(
+            AgentToolConcurrencyPolicy.partitionTurnBoundaryLast(
+                emptyList(),
+                emptyMap()
+            ).isEmpty()
+        )
     }
 }

@@ -772,8 +772,11 @@ class AgentOrchestrator(
                 }
 
                 // Phase B — partition validated calls into batches and execute.
+                // Turn-boundary (exclusive) batches are stably moved to the end so
+                // non-exclusive sibling calls complete in this round instead of being
+                // dropped once the exclusive tool runs.
                 if (!advanceToNextRound && validatedCalls.isNotEmpty()) {
-                    val batches = AgentToolConcurrencyPolicy.partitionToolCalls(
+                    val batches = AgentToolConcurrencyPolicy.partitionTurnBoundaryLast(
                         validatedCalls,
                         parsedArgsMap
                     )
