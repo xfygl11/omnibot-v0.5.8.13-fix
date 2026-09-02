@@ -124,16 +124,3 @@ jobs:
           :app:testDevelopStandardDebugUnitTest
           :app:lintDevelopStandardDebug
           -Ptarget=lib/main_standard.dart
-
-      - name: Build debug APK
-        run: |
-          ./gradlew --no-daemon --parallel --build-cache
-          :app:assembleDevelopStandardDebug
-          -Ptarget=lib/main_standard.dart
-
-      - name: Upload debug APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: debug-apk
-          path: app/build/outputs/apk/developStandard/debug/*.apk
-          if-no-files-found: error
