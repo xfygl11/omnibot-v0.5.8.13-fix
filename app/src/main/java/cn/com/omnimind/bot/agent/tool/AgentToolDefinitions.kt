@@ -592,6 +592,10 @@ object AgentToolDefinitions {
             put("displayName", "查询已安装应用")
             put("toolType", "builtin")
             put("description", "查询设备已安装应用列表。需要应用包名或确认应用是否已安装时优先调用。")
+            put(
+                "postToolRule",
+                "此工具与 bash/terminal_execute 是互斥的 turn boundary。若本轮调用了 bash 或 terminal_execute，不要再同时调用 context_apps_query；请分两轮分别调用，先执行 bash 命令，再查询应用信息，或反过来。"
+            )
             putJsonObject("parameters") {
                 put("type", "object")
                 putJsonObject("properties") {
