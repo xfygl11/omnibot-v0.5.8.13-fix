@@ -785,7 +785,12 @@ class AgentOrchestrator(
                             }
                     )
 
+                    var hitTurnBoundary = false
                     batchLoop@ for (batch in batches) {
+                        // After a turn-boundary tool, only parallel-safe batches may continue.
+                        if (hitTurnBoundary && !batch.parallel) {
+                            break@batchLoop
+                        }
                         val batchResults: List<Pair<AssistantToolCall, ToolExecutionResult>>
                         if (batch.parallel && batch.calls.size > 1) {
                             // Parallel batch: launch async per call. callback.onToolCallStart /
@@ -910,7 +915,7 @@ class AgentOrchestrator(
                                 AgentToolConcurrencyPolicy.isTurnBoundary(call.function.name)
                             ) {
                                 advanceToNextRound = true
-                                breakBatchLoopAfterPost = true
+                                hitTurnBoundary = true
                                 pendingToolCallBackfillReason = t(
                                     "独占工具 ${call.function.name} 已占用本轮，当前 assistant 消息中的剩余 tool_call 未执行。",
                                     "Exclusive tool ${call.function.name} occupied this turn, so the remaining tool calls in this assistant message were not executed."
