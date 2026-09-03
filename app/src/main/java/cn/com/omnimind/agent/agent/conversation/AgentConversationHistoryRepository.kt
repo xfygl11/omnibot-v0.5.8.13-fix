@@ -679,7 +679,7 @@ class AgentConversationHistoryRepository(
         }
     }
 
-    private suspend fun refreshConversationMetadata(conversationId: Long) {
+    suspend fun refreshConversationMetadata(conversationId: Long) {
         val conversation = DatabaseHelper.getConversationById(conversationId) ?: return
         val lastEntry = DatabaseHelper.getLatestAgentConversationEntryHeader(conversationId)
         val firstEntry = DatabaseHelper.getEarliestAgentConversationEntryHeader(conversationId)

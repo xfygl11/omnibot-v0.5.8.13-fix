@@ -454,6 +454,7 @@ Do NOT continue the conversation or answer questions inside it. Do NOT translate
             summary = summary,
             cutoffEntryDbId = cutoffEntryDbId
         )
+        historyRepository.refreshConversationMetadata(conversationId)
         return CompactionOutcome(
             compacted = true,
             summary = summary,
