@@ -1544,7 +1544,8 @@ class AgentOrchestrator(
             normalized.contains("weekly usage limit") ||
             normalized.contains("freeusagelimiterror") ||
             normalized.contains("gousagelimiterror") ||
-            normalized.contains("available balance")
+            normalized.contains("available balance") ||
+            normalized.contains("rate_limit_check_failed")
     }
 
     private fun looksLikeTransientTransportFailure(message: String): Boolean {

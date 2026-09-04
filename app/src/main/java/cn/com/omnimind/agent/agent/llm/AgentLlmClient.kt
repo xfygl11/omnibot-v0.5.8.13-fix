@@ -168,6 +168,7 @@ class HttpAgentLlmClient(
             "socket closed",
             "timeout",
             "timed out",
+            "closed before completion signal",
         )
         // The platform gateway reserves quota from the whole prompt plus the
         // requested output ceiling. Reusing full agent history, every tool schema,
