@@ -96,7 +96,7 @@ internal fun isLengthStopAtContextCapacity(
  * user-visible terminal answer. Callers can still choose a smaller budget for
  * constrained flows, but a normal Agent turn must never be unbounded.
  */
-internal const val DEFAULT_AGENT_MAX_MODEL_ROUNDS = 16
+internal const val DEFAULT_AGENT_MAX_MODEL_ROUNDS = 36
 
 class AgentOrchestrator(
     private val llmClient: AgentLlmClient,
